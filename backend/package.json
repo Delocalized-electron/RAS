@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend for ras",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Delocalized-electron/ras.git"
+  },
+  "author": "delocalalized_electron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Delocalized-electron/ras/issues"
+  },
+  "homepage": "https://github.com/Delocalized-electron/ras#readme"
+}
