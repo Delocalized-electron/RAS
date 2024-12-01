@@ -13,8 +13,8 @@ const registerUser = asyncHandler(async (req, res) => {
   6. Remove password and refresh token field from response
   7.return res
    */
+
   const { username, email, password } = req.body;
-  console.log("email: ", email);
 
   //check if any field is empty
   if ([username, email, password].some((field) => field?.trim() === "")) {
@@ -24,8 +24,6 @@ const registerUser = asyncHandler(async (req, res) => {
   const existedUser = await User.findOne({
     $or: [{ username }, { email }],
   });
-  console.log(existedUser);
-  //
   if (existedUser) {
     throw new ApiError(409, "User with Username/email already exists");
   }
@@ -35,13 +33,14 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
   });
+  // get user from db without password and refreshToken
   const createdUser = await User.findById(user._id).select(
     "-password -refreshToken"
   );
-  console.log(createdUser);
   if (!createdUser) {
     throw new ApiError(500, "Something went wrong while creating user ");
   }
+  //Send the response that user is created
   return res
     .status(201)
     .json(new ApiResponse(200, createdUser, "User registered successfully"));
