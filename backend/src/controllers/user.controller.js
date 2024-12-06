@@ -33,22 +33,22 @@ const registerUser = asyncHandler(async (req, res) => {
     7.return res
     */
 
-  const { username, email, password } = req.body;
+  const { fullName, email, password } = req.body;
 
   //check if any field is empty
-  if ([username, email, password].some((field) => field?.trim() === "")) {
+  if ([fullName, email, password].some((field) => field?.trim() === "")) {
     throw new ApiError(400, "All fields are required");
   }
   //check if already exists
   const existedUser = await User.findOne({
-    $or: [{ username }, { email }],
+    $or: [{ fullName }, { email }],
   });
   if (existedUser) {
     throw new ApiError(409, "User with Username/email already exists");
   }
   // add user to db
   const user = await User.create({
-    username: username.toLowerCase(),
+    fullName: fullName.toLowerCase(),
     email,
     password,
   });
@@ -73,7 +73,7 @@ const loginUser = asyncHandler(async (req, res) => {
     4. access and refresh token
     5. send cookie
     */
-  const { username, email, password } = req.body;
+  const { fullName, email, password } = req.body;
   //check if input have email or not
   if (!email) {
     throw new ApiError(400, "Email is required");
@@ -199,4 +199,54 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
   }
 });
 
-export { registerUser, loginUser, logoutUser, refreshAccessToken };
+const changeCurrentPassword = asyncHandler(async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+
+  const user = await User.findById(req.user?._id);
+  const isPasswordCorrect = await user.isPasswordCorrect(oldPassword);
+
+  if (!isPasswordCorrect) {
+    throw new ApiError(400, "Invalid old password");
+  }
+  user.password = newPassword;
+  await user.save({ validateBeforeSave: false });
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, {}, "Password changed successfully"));
+});
+
+const getCurrentUser = asyncHandler(async (req, res) => {
+  return res
+    .status(200)
+    .json(new ApiResponse(200, req.user, "Current user fetched successfully"));
+});
+
+const updateAccountDetails = asyncHandler(async (req, res) => {
+  const { fullName } = req.body;
+
+  if (!fullName) {
+    throw new ApiError(400, "All fields are required");
+  }
+  const user = User.findByIdAndUpdate(
+    req.user?._id,
+    {
+      $set: { fullName },
+    },
+    { new: true }
+  ).select("-password");
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, user, "Account details updated successfully"));
+});
+
+export {
+  registerUser,
+  loginUser,
+  logoutUser,
+  refreshAccessToken,
+  changeCurrentPassword,
+  getCurrentUser,
+  updateAccountDetails,
+};
