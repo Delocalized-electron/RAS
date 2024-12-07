@@ -62,11 +62,35 @@ const addItems = asyncHandler(async (req, res) => {
 });
 
 const removeItems = asyncHandler(async (req, res) => {
-  const { itemName, itemQuantity, itemPrice } = req.body;
-  // check if input is not empty
+  /**
+   * get the itemname and price
+   * check if item exists in DB
+   *
+   *
+   */
+  try {
+    const { itemName, itemPrice } = req.body;
+    // check if input is not empty
 
-  if (!itemName || !itemQuantity || !itemPrice) {
-    throw new ApiError(400, "All fields are necessary");
+    if (!itemName || !itemPrice) {
+      throw new ApiError(400, "All fields are necessary");
+    }
+
+    const item = await Stock.findOneAndDelete({
+      itemName,
+      itemPrice,
+    });
+    console.log(item);
+
+    if (!item) {
+      throw new ApiError(404, "Item not found");
+    }
+    return res
+      .status(200)
+      .json(new ApiResponse(200, {}, "item deleted successfully"));
+  } catch (error) {
+    throw new ApiError(500, error?.message || "Internal server error");
   }
 });
+
 export { addItems, removeItems };
