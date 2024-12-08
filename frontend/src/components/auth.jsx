@@ -1,7 +1,7 @@
 import React from "react";
 import * as Components from "../components/ui/Component"
 
-const auth = () => {
+const Auth = () => {
   const [signIn, toggle] = React.useState(true);
   return (
     <Components.Container>
@@ -52,4 +52,4 @@ const auth = () => {
   );
 };
 
-export default auth;
+export default Auth;

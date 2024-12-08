@@ -1,11 +1,10 @@
 import "./App.css";
-import Navbar from "./components/navbar";
+import Auth from "./components/auth";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <p>Home page</p>
+      <Auth />
     </div>
   );
 }
