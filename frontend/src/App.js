@@ -1,13 +1,8 @@
 import "./App.css";
-import Auth from "./components/auth";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  return (
-    <div className="App text-3xl font-bold bold italic">
-      <p>Hello World</p>
-      <Auth />
-    </div>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
