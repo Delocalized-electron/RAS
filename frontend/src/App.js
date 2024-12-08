@@ -1,11 +1,8 @@
 import "./App.css";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  return (
-    <div className="App text-3xl font-bold bold italic">
-      <p>Hello World</p>
-    </div>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
