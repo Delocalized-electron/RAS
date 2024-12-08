@@ -8,16 +8,14 @@ const Auth = () => {
 
   const handleSignUp = (event) => {
     event.preventDefault();
-    // Handle sign-up logic here (e.g., validation, API call)
     console.log("User signed up");
-    navigate('/home'); // Navigate to the home page
+    navigate('/home');
   };
 
   const handleSignIn = (event) => {
     event.preventDefault();
-    // Handle sign-in logic here (e.g., authentication, API call)
     console.log("User signed in");
-    navigate('/home'); // Navigate to a dashboard or home page
+    navigate('/home');
   };
 
   return (
