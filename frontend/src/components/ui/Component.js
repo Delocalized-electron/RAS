@@ -11,6 +11,13 @@ export const Container = styled.div`
   min-height: 550px;
 `;
 
+export const Wrapper = styled.div`
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+`
+
 export const SignUpContainer = styled.div`
   position: absolute;
   top: 0;
@@ -68,8 +75,8 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
+  border: 1px solid #1e90ff;
+  background-color: #2a5298;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -84,6 +91,7 @@ export const Button = styled.button`
     outline: none;
   }
 `;
+
 export const GhostButton = styled(Button)`
   background-color: transparent;
   border-color: #ffffff;
@@ -95,6 +103,7 @@ export const Anchor = styled.a`
   text-decoration: none;
   margin: 15px 0;
 `;
+
 export const OverlayContainer = styled.div`
   position: absolute;
   top: 0;
@@ -109,9 +118,9 @@ export const OverlayContainer = styled.div`
 `;
 
 export const Overlay = styled.div`
-  background: #ff416c;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background: #1e3c72;
+  background: -webkit-linear-gradient(to right, #1e3c72, #2a5298);
+  background: linear-gradient(to right, #1e3c72, #2a5298);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
