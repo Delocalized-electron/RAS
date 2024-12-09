@@ -3,6 +3,10 @@ import { NavLink } from "react-router-dom";
 
 const lisItems = ["Home", "Add items", "Invetory", "Low stock"];
 const listIcons = [];
+const isActiveNavLinkTWClasses =
+  "bg-slate-500 text-white px-3 py-2 rounded-full ";
+const nonActiveNavLinkTWClasses =
+  "text-gray-300 hover:bg-gray-300 hover:text-white px-3 py-2 rounded-full transition-all duration-400";
 const Navbar = () => {
   return (
     <div className="fixed bg-white justify-between gap-1 py-3 px-10 right-1/2 translate-x-[50%] bottom-[20px] rounded-full backdrop-blur-md bg-opacity-30 text-slate shadow-lg z-10 shadow-transparent md:flex hidden">
@@ -24,9 +28,7 @@ const Navbar = () => {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive
-                ? "bg-slate-500 text-white px-3 py-2 rounded-full  "
-                : "text-gray-300 hover:bg-gray-300 hover:text-white px-3 py-2 rounded-full  "
+              isActive ? isActiveNavLinkTWClasses : nonActiveNavLinkTWClasses
             }
           >
             Home
@@ -36,9 +38,7 @@ const Navbar = () => {
           <NavLink
             to="/addItems"
             className={({ isActive }) =>
-              isActive
-                ? "bg-slate-500 text-white px-3 py-2 rounded-full  "
-                : "text-gray-300 hover:bg-gray-300 hover:text-white px-3 py-2 rounded-full  "
+              isActive ? isActiveNavLinkTWClasses : nonActiveNavLinkTWClasses
             }
           >
             Add Items
@@ -48,9 +48,7 @@ const Navbar = () => {
           <NavLink
             to="/stocks"
             className={({ isActive }) =>
-              isActive
-                ? "bg-slate-500 text-white px-3 py-2 rounded-full  "
-                : "text-gray-300 hover:bg-gray-300 hover:text-white px-3 py-2 rounded-full  "
+              isActive ? isActiveNavLinkTWClasses : nonActiveNavLinkTWClasses
             }
           >
             Inventory
@@ -60,9 +58,7 @@ const Navbar = () => {
           <NavLink
             to="/lowStock"
             className={({ isActive }) =>
-              isActive
-                ? "bg-slate-500 text-white px-3 py-2 rounded-full  "
-                : "text-gray-300 hover:bg-gray-300 hover:text-white px-3 py-2 rounded-full  "
+              isActive ? isActiveNavLinkTWClasses : nonActiveNavLinkTWClasses
             }
           >
             Low stock
