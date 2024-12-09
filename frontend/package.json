@@ -7,6 +7,7 @@
     "babel-preset-react-app": "^10.0.1",
     "cra-template": "1.2.0",
     "eslint": "^9.16.0",
+    "ldrs": "^1.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.0.2",
