@@ -1,29 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import {
+  AiOutlineHome,
+  AiOutlinePlusSquare,
+  AiOutlineStock,
+} from "react-icons/ai";
+import { MdOutlineInventory2 } from "react-icons/md";
 
-const lisItems = ["Home", "Add items", "Invetory", "Low stock"];
-const listIcons = [];
 const isActiveNavLinkTWClasses =
-  "bg-slate-500 text-white px-3 py-2 rounded-full ";
+  "bg-slate-500 text-white px-2 py-1 md:px-3 md:py-2 rounded-full flex items-center flex-col md:flex-row md:gap-2";
 const nonActiveNavLinkTWClasses =
-  "text-gray-300 hover:bg-gray-300 hover:text-white px-3 py-2 rounded-full transition-all duration-400";
+  "text-gray-300 hover:bg-gray-300 hover:text-white px-2 py-1 md:px-3 md:py-2 rounded-full transition-all duration-400 flex flex-col items-center md:flex-row md:gap-2";
+
 const Navbar = () => {
   return (
-    <div className="fixed bg-white justify-between gap-1 py-3 px-10 right-1/2 translate-x-[50%] bottom-[20px] rounded-full backdrop-blur-md bg-opacity-30 text-slate shadow-lg z-10 shadow-transparent md:flex hidden">
-      <ul className="flex gap-8 text-base">
-        {/* {lisItems.map((item) => {
-          return (
-            <>
-              <li
-                className="relative text-slate-700 group cursor-pointer   hover:shadow "
-                key={item}
-              >
-                {item}
-                <span className="absolute left-0 bottom-[-5px] w-0 h-1 rounded-xl bg-gradient-to-r from-white to-grey transition-all duration-300 group-hover:w-full"></span>
-              </li>
-            </>
-          );
-        })} */}
+    <div className="fixed bg-white justify-between gap-2 md:gap-3 py-2 px-4 md:px-10 right-1/2 translate-x-[50%] bottom-[10px] rounded-full backdrop-blur-md bg-opacity-30 text-slate shadow-lg z-10 shadow-transparent flex flex-wrap">
+      <ul className="flex justify-between items-center gap-4 md:gap-8 text-sm md:text-base">
         <li>
           <NavLink
             to="/"
@@ -31,7 +23,14 @@ const Navbar = () => {
               isActive ? isActiveNavLinkTWClasses : nonActiveNavLinkTWClasses
             }
           >
-            Home
+            {/* Icon displayed only below md size */}
+            <AiOutlineHome className="text-2xl md:hidden" />
+            {/* Text displayed only on md and larger screens */}
+            <span className="text-[0.7rem] md:text-lg hidden md:block">
+              Home
+            </span>
+            {/* Small text displayed below the icon */}
+            <span className="text-[0.6rem] md:hidden">Home</span>
           </NavLink>
         </li>
         <li>
@@ -41,7 +40,13 @@ const Navbar = () => {
               isActive ? isActiveNavLinkTWClasses : nonActiveNavLinkTWClasses
             }
           >
-            Add Items
+            <AiOutlinePlusSquare className="text-2xl md:hidden" />
+            <span className="text-[0.7rem] whitespace-nowrap md:text-lg hidden md:block">
+              Add Items
+            </span>
+            <span className="text-[0.6rem] whitespace-nowrap md:hidden">
+              Add Items
+            </span>
           </NavLink>
         </li>
         <li>
@@ -51,7 +56,11 @@ const Navbar = () => {
               isActive ? isActiveNavLinkTWClasses : nonActiveNavLinkTWClasses
             }
           >
-            Inventory
+            <MdOutlineInventory2 className="text-2xl md:hidden" />
+            <span className="text-[0.7rem] md:text-lg hidden md:block">
+              Inventory
+            </span>
+            <span className="text-[0.6rem] md:hidden">Inventory</span>
           </NavLink>
         </li>
         <li>
@@ -61,7 +70,13 @@ const Navbar = () => {
               isActive ? isActiveNavLinkTWClasses : nonActiveNavLinkTWClasses
             }
           >
-            Low stock
+            <AiOutlineStock className="text-2xl md:hidden" />
+            <span className="text-[0.7rem] whitespace-nowrap md:text-lg hidden md:block">
+              Low Stocks
+            </span>
+            <span className="text-[0.6rem] whitespace-nowrap md:hidden">
+              Low Stocks
+            </span>
           </NavLink>
         </li>
       </ul>

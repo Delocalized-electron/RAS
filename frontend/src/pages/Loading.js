@@ -5,7 +5,7 @@ lineWobble.register();
 
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center h-screen bg-slate-500 bg-center">
+    <div className="flex items-center justify-center h-screen bg-center">
       <div>
         <l-line-wobble
           size="100"
