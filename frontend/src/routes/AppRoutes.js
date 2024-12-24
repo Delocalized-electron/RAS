@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Loading from "../pages/Loading";
 import Login from "../pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
+import Register from "../pages/Register";
 
 const Home = lazy(() => import("../pages/Home"));
 const AddItems = lazy(() => import("../pages/AddItems"));
@@ -14,6 +15,7 @@ const AppRoutes = () => {
     <Suspense fallback={<Loading />}>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route
           path="/"
           element={
