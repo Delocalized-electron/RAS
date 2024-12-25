@@ -9,7 +9,8 @@ const Temp = () => {
 
   const handleLogout = () => {
     dispatch(authActions.logout());
-    navigate("/login");
+    console.log("Navigating to:", "/login");
+    navigate("/login", { replace: true });
   };
 
   return (
