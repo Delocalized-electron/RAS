@@ -40,14 +40,25 @@ const Login = () => {
       console.log(await response);
       if (response.data.success) {
         dispatch(authActions.login());
-        navigate("/");
+        navigate("/temp");
       } else {
         setErrorMessage(response.data.message);
       }
     } catch (error) {
-      alert(error);
-      console.log(error);
-      setErrorMessage("Something went wrong. Please try again later.");
+      if (error.response) {
+        // Backend responded with an error
+        alert(error.response.data.message);
+        console.error("Backend error:", error.response.data);
+        setErrorMessage(error.response.data.message || "An error occurred.");
+      } else if (error.request) {
+        // No response received
+        console.error("No response received:", error.request);
+        setErrorMessage("No response from server. Please try again.");
+      } else {
+        // Something else went wrong
+        console.error("Error:", error.message);
+        setErrorMessage("An unexpected error occurred. Please try again.");
+      }
     }
   };
 

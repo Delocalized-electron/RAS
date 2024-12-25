@@ -4,6 +4,7 @@ import Loading from "../pages/Loading";
 import Login from "../pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import Register from "../pages/Register";
+import Temp from "../pages/Temp";
 
 const Home = lazy(() => import("../pages/Home"));
 const AddItems = lazy(() => import("../pages/AddItems"));
@@ -21,6 +22,14 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/temp"
+          element={
+            <ProtectedRoute>
+              <Temp />
             </ProtectedRoute>
           }
         />

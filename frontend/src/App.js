@@ -3,12 +3,15 @@ import "./App.css";
 import AppRoutes from "./routes/AppRoutes";
 import { Provider } from "react-redux";
 import store from "./store";
+import AuthChecker from "./components/AuthChecker";
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <AppRoutes />
+        <AuthChecker>
+          <AppRoutes />
+        </AuthChecker>
       </BrowserRouter>
     </Provider>
   );
