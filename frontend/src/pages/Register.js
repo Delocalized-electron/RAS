@@ -41,9 +41,21 @@ const Register = () => {
         setErrorMessage(response.data.message);
       }
     } catch (error) {
-      alert(error);
-      console.log(error);
-      setErrorMessage("Something went wrong. Please try again later.");
+      if (error.response) {
+        // The request was made and the server responded with a status code outside the 2xx range
+        console.error("Backend error:", error.response.data);
+        const errorMessage =
+          error.response.data.message || "An error occurred.";
+        setErrorMessage(errorMessage); // Display the backend error message
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("No response received:", error.request);
+        setErrorMessage("No response from server. Please try again.");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error setting up the request:", error.message);
+        setErrorMessage("An unexpected error occurred. Please try again.");
+      }
     }
   };
 
@@ -51,7 +63,7 @@ const Register = () => {
     <div className="flex flex-col min-h-screen font-montserrat bg-[#8671ff] overflow-y-hidden fixed inset-0">
       <Link
         className="flex items-center gap-1 flex-row right-5 top-2 underline text-white absolute"
-        to="/register"
+        to="/login"
       >
         Login <GoArrowRight />
       </Link>
