@@ -81,7 +81,7 @@ const Login = () => {
       {/* Login Form */}
       <form
         className="fixed md:left-[40%]
-         bottom-0 p-6 rounded-t-2xl md:w-[25rem] w-full flex flex-col gap-5 bg-white shadow-lg"
+         bottom-0 p-6 rounded-t-2xl md:w-[25rem] w-full flex flex-col gap-5 bg-white"
         onSubmit={handleLogin}
       >
         <InputField
