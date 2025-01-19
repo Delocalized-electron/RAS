@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { GoArrowRight } from "react-icons/go";
 import { authActions } from "../store/auth";
 import axios from "axios";
+import RAS_logo from "../assets/ras_logo.svg";
 
 const Login = () => {
   const [emailValid, setEmailValid] = useState(true);
@@ -63,42 +64,51 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen font-montserrat bg-[#8671ff] overflow-y-hidden fixed inset-0">
-      <Link
-        className="flex items-center gap-1 flex-row right-5 top-2 underline text-white absolute"
-        to="/register"
-      >
-        Sign up <GoArrowRight />
-      </Link>
-
-      {/* Welcome Section */}
+    <div className="flex flex-col min-h-screen font-montserrat overflow-y-hidden fixed inset-0">
+      <div className="flex items-center justify-between p-4">
+        <img src={RAS_logo} alt="RAS" className=" h-16" />
+        <Link
+          className="flex items-center gap-1 flex-row underline  "
+          to="/register"
+        >
+          Sign up <GoArrowRight />
+        </Link>
+      </div>
+      {/* Welcome Section
       <div className="flex font-medium font-montserrat text-2xl text-white flex-col items-center justify-center absolute top-[25%] left-0 right-0">
         <p>Welcome</p>
         <p>to</p>
         <p className="text-4xl">My Garage</p>
-      </div>
-
+      </div> */}
       {/* Login Form */}
       <form
-        className="fixed md:left-[40%]
-         bottom-0 p-6 rounded-t-2xl md:w-[25rem] w-full flex flex-col gap-5 bg-white"
+        className="md:left-[40%]
+          p-6 rounded-t-2xl md:w-[25rem] w-full h-full flex flex-col justify-between"
         onSubmit={handleLogin}
       >
-        <InputField
-          type="text"
-          placeholder="Razzaqautogarage@gmail.com"
-          label="Email"
-        />
-        {!emailValid && (
-          <p className="text-red-500 text-sm">Please enter a valid email</p>
-        )}
-        <InputField type="password" placeholder="*********" label="Password" />
-        <Link className="text-sm underline" to="/forgot-password">
-          Forgot Password?
-        </Link>
-        {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+        <div className="flex flex-col gap-6">
+          <InputField
+            type="text"
+            placeholder="Razzaqautogarage@gmail.com"
+            label="Email"
+          />
+          {!emailValid && (
+            <p className="text-red-500 text-sm">Please enter a valid email</p>
+          )}
+          <InputField
+            type="password"
+            placeholder="*********"
+            label="Password"
+          />
+          <Link className="text-sm underline" to="/forgot-password">
+            Forgot Password?
+          </Link>
+          {errorMessage && (
+            <p className="text-red-500 text-sm">{errorMessage}</p>
+          )}
+        </div>
         <button
-          className="py-4 bg-[#3212E8] text-white rounded-full hover:bg-gray-700"
+          className="py-4 bottom-0 bg-[#0D4EA0] text-white rounded-full hover:bg-gray-700"
           type="submit"
         >
           Login

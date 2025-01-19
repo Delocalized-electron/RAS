@@ -5,6 +5,8 @@ import InputField from "../components/InputField";
 import { validateEmail } from "../utils/validation";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import RAS_logo from "../assets/ras_logo.svg";
+
 const Register = () => {
   const [emailValid, setEmailValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -60,37 +62,43 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen font-montserrat bg-[#8671ff] overflow-y-hidden fixed inset-0">
-      <Link
-        className="flex items-center gap-1 flex-row right-5 top-2 underline text-white absolute"
-        to="/login"
-      >
-        Login <GoArrowRight />
-      </Link>
-      <div className="flex font-medium font-montserrat text-2xl text-white flex-col items-center justify-center absolute top-[25%] left-0 right-0">
-        <p>Create an account</p>
+    <div className="flex flex-col min-h-screen font-montserrat overflow-y-hidden">
+      <div className="flex items-center justify-between p-4">
+        <img src={RAS_logo} alt="RAS" className="h-16" />
+        <Link
+          className="flex items-center gap-1 flex-row underline"
+          to="/login"
+        >
+          Login <GoArrowRight />
+        </Link>
       </div>
 
       {/* Login Form */}
       <form
-        className="fixed md:left-[40%]
-         bottom-0 p-6 rounded-t-2xl md:w-[25rem] w-full flex flex-col gap-5 bg-white shadow-lg"
+        className="flex-grow p-6 rounded-t-2xl md:w-[25rem] w-full flex flex-col justify-between"
         onSubmit={handleRegister}
       >
-        <InputField type="text" placeholder="Ubed Khatri" label="Full Name" />
-        <InputField
-          type="text"
-          placeholder="Razzaqautogarage@gmail.com"
-          label="Email"
-        />
-        {!emailValid && (
-          <p className="text-red-500 text-sm">Please enter a valid email</p>
-        )}
-        <InputField type="password" placeholder="*********" label="Password" />
-
-        {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+        <div className="flex flex-col gap-6">
+          <InputField type="text" placeholder="Ubed Khatri" label="Full Name" />
+          <InputField
+            type="text"
+            placeholder="Razzaqautogarage@gmail.com"
+            label="Email"
+          />
+          {!emailValid && (
+            <p className="text-red-500 text-sm">Please enter a valid email</p>
+          )}
+          <InputField
+            type="password"
+            placeholder="*********"
+            label="Password"
+          />
+          {errorMessage && (
+            <p className="text-red-500 text-sm">{errorMessage}</p>
+          )}
+        </div>
         <button
-          className="py-4 bg-[#3212E8] text-white rounded-full hover:bg-gray-700"
+          className="py-4 bg-[#0D4EA0] text-white rounded-full hover:bg-gray-700"
           type="submit"
         >
           Register
