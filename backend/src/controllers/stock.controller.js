@@ -89,6 +89,7 @@ const addItems = asyncHandler(async (req, res) => {
   });
 
   if (existedItem) {
+    console.log("existedItem", existedItem);
     const item = await Stock.findByIdAndUpdate(
       existedItem._id,
       {

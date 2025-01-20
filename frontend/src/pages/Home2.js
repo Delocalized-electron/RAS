@@ -9,8 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchItems } from "../store/items";
 import Loading from "./Loading";
 import InventoryDisplay from "../components/InventoryDisplay";
+import RAS_logo from "../assets/ras_logo.svg";
+import LowStockHome from "../components/LowStockHome";
 
-const Home = () => {
+const Home2 = () => {
   const [tabIndex, setTabIndex] = useState(0); // State for active tab
   const dispatch = useDispatch();
   const { items, status, error } = useSelector((state) => state.items);
@@ -30,24 +32,19 @@ const Home = () => {
   return (
     <div className="flex flex-col bg-gray-50 min-h-screen font-montserrat fixed inset-0">
       {/* Header */}
-      <div className="flex p-4 justify-between text-3xl">
-        <h3>My Garage</h3>
+      <div className="flex p-4 justify-between items-center text-3xl">
+        <img src={RAS_logo} alt="RAS" className="h-16" />
         <IoSettingsOutline />
       </div>
-
       {/* Search Bar */}
-      <div className="flex p-4 mb-4 justify-between h-10">
-        <div className="relative w-full">
-          <IoSearchOutline className="absolute text-2xl m-4 left-1 top-2 transform -translate-y-1/2 text-gray-500" />
-          <input
-            className="w-full bg-[#EAEEEE] rounded-lg p-3 pl-14"
-            type="text"
-            placeholder="Search..."
-          />
-        </div>
-      </div>
 
-      {/* Tabs */}
+      <button className=" bg-[#EAEEEE] rounded-lg m-4">
+        <p className="flex text-xl items-center p-4 gap-2">
+          <IoSearchOutline className="text-2xl text-gray-500" /> Search...
+        </p>
+      </button>
+      <LowStockHome lowStockItems={lowStockItems} />
+      {/* Tabs
       <div className="flex justify-center border-b-2 border-[#EAEEEE] gap-4 mt-4">
         <button
           className={`px-4 py-2 flex gap-2 ${
@@ -67,10 +64,10 @@ const Home = () => {
         </button>
       </div>
 
-      {/* Swipeable Content */}
+      
       <div className="flex-grow overflow-hidden">
         <SwipeableViews index={tabIndex} onChangeIndex={handleTabChange}>
-          {/* Tab 1: Low on Stock */}
+          
           <div className="h-full overflow-y-auto p-4">
             {status === "idle" && <Loading />}
             {status === "loading" && <Loading />}
@@ -92,7 +89,7 @@ const Home = () => {
             )}
           </div>
 
-          {/* Tab 2: My Inventory */}
+          
           <div className="flex-grow overflow-y-auto overflow-hidden p-4">
             <InventoryDisplay
               items={items}
@@ -102,8 +99,7 @@ const Home = () => {
             />
           </div>
         </SwipeableViews>
-      </div>
-
+      </div> */}
       {/* Add New Item Button */}
       <div className="fixed bottom-0 left-0 right-0 px-6 py-4 flex items-center justify-center">
         <button
@@ -118,4 +114,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home2;
