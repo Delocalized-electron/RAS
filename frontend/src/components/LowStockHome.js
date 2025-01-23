@@ -32,7 +32,7 @@ const LowStockHome = (props) => {
   const { lowStockItems } = props;
 
   return (
-    <div className="flex flex-col p-4 mb-4 justify-between gap-4">
+    <div className="flex flex-col p-4 justify-between gap-4">
       <p className="text-xl align-middle flex flex-row items-center gap-2">
         Low on Stock <MdOutlineArrowForwardIos />
       </p>
