@@ -6,6 +6,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Register from "../pages/Register";
 import Temp from "../pages/Temp";
 import { useSelector } from "react-redux";
+import SearchItems from "../pages/SearchItems";
 
 const Home = lazy(() => import("../pages/Home"));
 const AddItems = lazy(() => import("../pages/AddItems"));
@@ -22,14 +23,8 @@ const AppRoutes = () => {
           element={isAuthenticated ? <Navigate to="/" replace /> : <Login />}
         />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<SearchItems />} />
         <Route
           path="/temp"
           element={

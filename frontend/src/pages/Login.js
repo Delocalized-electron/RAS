@@ -64,7 +64,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen font-montserrat overflow-y-hidden fixed inset-0">
+    <div className="flex flex-col min-h-screen fixed font-montserrat inset-0">
       <div className="flex items-center justify-between p-4">
         <img src={RAS_logo} alt="RAS" className=" h-16" />
         <Link
@@ -74,12 +74,7 @@ const Login = () => {
           Sign up <GoArrowRight />
         </Link>
       </div>
-      {/* Welcome Section
-      <div className="flex font-medium font-montserrat text-2xl text-white flex-col items-center justify-center absolute top-[25%] left-0 right-0">
-        <p>Welcome</p>
-        <p>to</p>
-        <p className="text-4xl">My Garage</p>
-      </div> */}
+
       {/* Login Form */}
       <form
         className="md:left-[40%]

@@ -89,6 +89,7 @@ const addItems = asyncHandler(async (req, res) => {
   });
 
   if (existedItem) {
+    console.log("existedItem", existedItem);
     const item = await Stock.findByIdAndUpdate(
       existedItem._id,
       {
@@ -197,10 +198,30 @@ const updateItemDetails = asyncHandler(async (req, res) => {
     );
 });
 
+const getAllItems = asyncHandler(async (req, res) => {
+  try {
+    const items = await Stock.find(); // Fetch all items from the database
+
+    if (!items || items.length === 0) {
+      return res
+        .status(200)
+        .json(new ApiResponse(200, [], "No items found in database")); // Return empty array if no items
+    }
+
+    return res
+      .status(200)
+      .json(new ApiResponse(200, items, "Items fetched successfully"));
+  } catch (error) {
+    console.error("Error fetching all items:", error);
+    throw new ApiError(500, error.message || "Internal server error");
+  }
+});
+
 export {
   addItems,
   removeItems,
   decreaseQuantityByOne,
   increaseQuantityByOne,
   updateItemDetails,
+  getAllItems,
 };
