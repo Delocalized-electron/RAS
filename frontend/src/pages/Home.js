@@ -44,14 +44,14 @@ const Home = () => {
 
       <button
         onClick={handleSearch}
-        className=" bg-[#EAEEEE] rounded-lg mt-0 m-4"
+        className=" bg-[#EAEEEE] text-[#616464] rounded-lg mt-0 m-4"
       >
         <p className="flex text-xl items-center p-3 gap-2">
           <IoSearchOutline className="text-2xl text-gray-500" /> Search...
         </p>
       </button>
       <LowStockHome lowStockItems={lowStockItems} />
-      <p className="text-xl ml-4 mt-0">My Inventory</p>
+      <p className="text-xl font-medium ml-4 mt-2">My Inventory</p>
       <div className="flex-grow gap-4  p-4 pb-24">
         <InventoryDisplay
           items={items}
