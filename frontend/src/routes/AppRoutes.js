@@ -33,14 +33,7 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/addItems"
-          element={
-            <ProtectedRoute>
-              <AddItems />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/addItems" element={<AddItems />} />
         <Route
           path="/stocks"
           element={
