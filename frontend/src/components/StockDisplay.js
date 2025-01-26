@@ -3,8 +3,7 @@ import { GoPencil } from "react-icons/go";
 import { Link } from "react-router-dom";
 
 const StockDisplay = (props) => {
-  console.log(props);
-  const { itemName, itemQuantity, itemId } = props;
+  const { itemName, itemPrice, itemQuantity, itemId } = props;
   const isInv = props.isInventory;
   let quantityClass =
     "rounded-full w-fit text-xs px-2 bg-[#FCEBEC] text-[#9E2930]"; // Default red for <5
@@ -21,6 +20,7 @@ const StockDisplay = (props) => {
       <div className="flex items-center justify-between p-4 bg-white rounded-lg border-1 border-[#EAEEEE] shadow-sm">
         <div className="flex gap-2 flex-col justify-between ">
           <p className=" text-md">{itemName}</p>
+          <p className="text-sm">₹ {itemPrice}</p>
           <p className={quantityClass}>
             {itemQuantity} {itemQuantity <= 1 ? "item" : "items"} left
           </p>

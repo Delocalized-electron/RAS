@@ -12,6 +12,22 @@ export const fetchItems = createAsyncThunk("items/fetchItems", async () => {
   return response.data.data;
 });
 
+export const addItem = createAsyncThunk(
+  "items/addItem",
+  async (itemData, { rejectWithValue }) => {
+    console.log("itemData", itemData);
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/stocks/add-items`,
+        itemData
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const itemsSlice = createSlice({
   name: "items",
   initialState: intialItemsState,
@@ -29,6 +45,17 @@ const itemsSlice = createSlice({
       .addCase(fetchItems.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(addItem.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addItem.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.items.push(action.payload);
+      })
+      .addCase(addItem.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
       });
   },
 });

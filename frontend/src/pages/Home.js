@@ -66,6 +66,9 @@ const Home = () => {
         <button
           className="py-4 gap-2 w-full max-w-screen-md flex flex-row text-white rounded-full text-xl justify-center bg-[#3212E8] hover:bg-gray-700 transition-colors duration-300"
           style={{ backgroundColor: "#0D4EA0" }}
+          onClick={() => {
+            navigate("/addItems");
+          }}
         >
           <PiPlus className="text-2xl" />
           <p className="m-0 p-0">Add New Item</p>
