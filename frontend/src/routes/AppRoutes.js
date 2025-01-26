@@ -23,8 +23,22 @@ const AppRoutes = () => {
           element={isAuthenticated ? <Navigate to="/" replace /> : <Login />}
         />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<SearchItems />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <ProtectedRoute>
+              <SearchItems />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/temp"
           element={
@@ -33,7 +47,14 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/addItems" element={<AddItems />} />
+        <Route
+          path="/addItems"
+          element={
+            <ProtectedRoute>
+              <AddItems />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/stocks"
           element={

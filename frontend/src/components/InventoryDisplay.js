@@ -21,6 +21,7 @@ const InventoryDisplay = (props) => {
                 itemId={item._id}
                 key={item._id}
                 itemName={item.itemName}
+                itemPrice={item.itemPrice}
                 itemQuantity={item.itemQuantity}
                 isInventory={isInventory}
               />
