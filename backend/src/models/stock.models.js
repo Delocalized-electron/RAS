@@ -17,10 +17,6 @@ const stockSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    isLowOnStock: {
-      type: Boolean,
-      default: 0,
-    },
   },
   { timestamps: true }
 );
