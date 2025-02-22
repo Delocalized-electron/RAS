@@ -200,7 +200,7 @@ const updateItemDetails = asyncHandler(async (req, res) => {
 
 const getAllItems = asyncHandler(async (req, res) => {
   try {
-    const items = await Stock.find(); // Fetch all items from the database
+    const items = await Stock.find().sort({ createdAt: -1 }); // Fetch all items from the database
 
     if (!items || items.length === 0) {
       return res

@@ -8,7 +8,11 @@ const intialItemsState = {
 };
 
 export const fetchItems = createAsyncThunk("items/fetchItems", async () => {
-  const response = await axios.get(`${process.env.REACT_APP_API_URL}/stocks`);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/stocks`, {
+    params: {
+      sort: "-createdAt",
+    },
+  });
   return response.data.data;
 });
 
@@ -51,7 +55,7 @@ const itemsSlice = createSlice({
       })
       .addCase(addItem.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.items.push(action.payload);
+        state.items.unshift(action.payload);
       })
       .addCase(addItem.rejected, (state, action) => {
         state.status = "failed";
